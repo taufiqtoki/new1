@@ -1,0 +1,43 @@
+{
+  "customers": [],
+  "referers": [],
+  "orders": [
+    {
+      "customerName": "taslima",
+      "customerPhone": "01758678701",
+      "refererName": "taufiq",
+      "refererPhone": "01822272133",
+      "items": [
+        {
+          "name": "min",
+          "price": 500,
+          "qty": 1,
+          "cpp": 400,
+          "total": 500
+        }
+      ],
+      "date": "2024-06-01T11:54:19.656Z",
+      "totalProducts": 1,
+      "totalPrice": 500
+    },
+    {
+      "customerName": "",
+      "customerPhone": "01758678701",
+      "refererName": "",
+      "refererPhone": "01822272133",
+      "items": [
+        {
+          "name": "d",
+          "price": 44,
+          "qty": 444,
+          "cpp": 4444,
+          "total": 19536
+        }
+      ],
+      "date": "2024-06-01T14:31:04.149Z",
+      "totalProducts": 444,
+      "totalPrice": 19536
+    }
+  ],
+  "items": []
+}

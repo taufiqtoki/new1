@@ -1,0 +1,146 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+
+    .text-dark-gold {
+        color: #b8860b;
+    }
+    .nav-buttons {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .nav-buttons button {
+        flex: 1 1 48%;
+        margin: 4px;
+    }
+    @media (min-width: 640px) {
+        .nav-buttons {
+            flex-wrap: nowrap;
+        }
+        .nav-buttons button {
+            flex: 1;
+            margin: 0;
+            margin-right: 8px;
+        }
+    }
+    .rounded {
+        border-radius: 0.375rem;
+    }
+    table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    th, td {
+        border: 1px solid #ddd;
+        padding: 8px;
+    }
+    th {
+        background-color: #f2f2f2;
+    }
+
+.hidden {
+  display: none;
+}
+.toast {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background-color: #48bb78; /* Tailwind green-500 */
+  color: white;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+    display: none;
+  }
+}
+
+.suggestions-dropdown {
+    max-height: 200px;
+    overflow-y: auto;
+    border-radius: 0.25rem;
+}
+
+.active {
+    background-color: #2b6cb0 !important;
+}
+
+.tab-content {
+    border-radius: 0.25rem;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+#toast {
+    transition: opacity 0.5s ease-in-out;
+}
+.toast {
+  position: fixed;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #38a169; /* Tailwind green-600 */
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.toast.error {
+  background-color: #e53e3e; /* Tailwind red-600 */
+}
+
+
+button:active {
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+input[type="text"], input[type="number"] {
+  border-radius: 0.5rem;
+}
+
+.tab-button {
+  border-radius: 0.5rem;
+}
+
+.tab-content {
+  border-radius: 0.5rem;
+}
+
+table {
+  border-radius: 0.5rem;
+}
+
+thead {
+  border-radius: 0.5rem;
+}
+
+tbody {
+  border-radius: 0.5rem;
+}
