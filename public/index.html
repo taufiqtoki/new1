@@ -23,7 +23,7 @@
     <div class="flex flex-col md:flex-row space-y-2 md:space-y-0 md:space-x-2 mt-2 md:mt-0">
       <button data-tab="pos" class="tab-button active-tab px-2 py-1 md:px-4 md:py-2 rounded">POS</button>
       <button data-tab="customers" class="tab-button px-2 py-1 md:px-4 md:py-2 rounded">Customers</button>
-      <button data-tab="referers" class="tab-button px-2 py-1 md:px-4 md:py-2 rounded">Referers</button>
+      <button data-tab="referrers" class="tab-button px-2 py-1 md:px-4 md:py-2 rounded">Referrers</button>
       <button data-tab="sales-history" class="tab-button px-2 py-1 md:px-4 md:py-2 rounded">Sales History</button>
       <button id="clear-data" class="px-2 py-1 md:px-4 md:py-2 bg-red-500 text-white rounded">Clear Data</button>
     </div>
@@ -41,12 +41,12 @@
             <input id="customer-name" type="text" class="w-full p-2 border rounded text-sm md:text-base lg:text-lg">
           </div>
           <div>
-            <label for="referer-phone" class="block text-sm md:text-base lg:text-lg">Referer Phone (Optional)</label>
-            <input id="referer-phone" type="text" class="w-full p-2 border rounded text-sm md:text-base lg:text-lg">
+            <label for="referrer-phone" class="block text-sm md:text-base lg:text-lg">Referrer Phone (Optional)</label>
+            <input id="referrer-phone" type="text" class="w-full p-2 border rounded text-sm md:text-base lg:text-lg">
           </div>
           <div>
-            <label for="referer-name" class="block text-sm md:text-base lg:text-lg">Referer Name (Optional)</label>
-            <input id="referer-name" type="text" class="w-full p-2 border rounded text-sm md:text-base lg:text-lg">
+            <label for="referrer-name" class="block text-sm md:text-base lg:text-lg">Referrer Name (Optional)</label>
+            <input id="referrer-name" type="text" class="w-full p-2 border rounded text-sm md:text-base lg:text-lg">
           </div>
         </div>
         <div class="overflow-x-auto">
@@ -95,8 +95,8 @@
       <ul id="customer-suggestions" class="suggestions-dropdown hidden"></ul>
     </section>
   
-    <section id="referers-tab" class="tab-content hidden">
-      <h2 class="text-2xl mb-4">Referers</h2>
+    <section id="referrers-tab" class="tab-content hidden">
+      <h2 class="text-2xl mb-4">Referrers</h2>
       <div class="overflow-x-auto">
         <table class="w-full bg-white rounded shadow-lg">
           <thead>
@@ -108,11 +108,11 @@
               <th class="border px-4 py-2">Total Profit Earned</th>
             </tr>
           </thead>
-          <tbody id="referer-list"></tbody>
+          <tbody id="referrer-list"></tbody>
         </table>
       </div>
-      <input id="referer-search" type="text" class="mt-4 w-full p-2 border rounded" placeholder="Search Referers...">
-      <ul id="referer-suggestions" class="suggestions-dropdown hidden"></ul>
+      <input id="referrer-search" type="text" class="mt-4 w-full p-2 border rounded" placeholder="Search Referrers...">
+      <ul id="referrer-suggestions" class="suggestions-dropdown hidden"></ul>
     </section>
   
     <section id="sales-history-tab" class="tab-content hidden">
@@ -123,7 +123,7 @@
             <tr class="bg-gray-200">
               <th class="border px-4 py-2">#</th>
               <th class="border px-4 py-2">Customer Name</th>
-              <th class="border px-4 py-2">Referer Name</th>
+              <th class="border px-4 py-2">Referrer Name</th>
               <th class="border px-4 py-2">Total Price</th>
               <th class="border px-4 py-2">Date</th>
             </tr>
@@ -134,8 +134,12 @@
       <input id="sales-history-search" type="text" class="mt-4 w-full p-2 border rounded" placeholder="Search Sales History...">
     </section>
   </main>
-
+  
+  <script src="non-pos.js"></script>
+  <script src="suggestions.js"></script>
+  <script src="tabs.js"></script>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="pos.js"></script>
+  <script src="axios.min.js"></script>
 </body>
 </html>

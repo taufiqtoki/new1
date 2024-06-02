@@ -212,8 +212,16 @@ $(document).ready(function () {
   $('#pos-form').on('submit', handleSubmitSale);
   $('#clear-data').on('click', () => {
     if (confirm('Are you sure you want to clear all data?')) {
-      localStorage.clear();
-      location.reload();
+      fetch('/clear-data', {
+        method: 'POST'
+      }).then(response => {
+        if (response.ok) {
+          localStorage.clear();
+          location.reload();
+        } else {
+          alert('Failed to clear data.');
+        }
+      });
     }
   });
 

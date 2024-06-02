@@ -3,9 +3,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const refererPhoneInput = document.getElementById('referer-phone');
   const itemNameInputs = document.querySelectorAll('.item-name');
 
-  customerPhoneInput.addEventListener('input', () => showSuggestions(customerPhoneInput, 'customers'));
-  refererPhoneInput.addEventListener('input', () => showSuggestions(refererPhoneInput, 'referers'));
-  itemNameInputs.forEach(input => input.addEventListener('input', () => showSuggestions(input, 'items')));
+  if (customerPhoneInput) {
+    customerPhoneInput.addEventListener('input', () => showSuggestions(customerPhoneInput, 'customers'));
+  }
+
+  if (refererPhoneInput) {
+    refererPhoneInput.addEventListener('input', () => showSuggestions(refererPhoneInput, 'referers'));
+  }
+
+  itemNameInputs.forEach(input => {
+    if (input) {
+      input.addEventListener('input', () => showSuggestions(input, 'items'));
+    }
+  });
 
   function showSuggestions(input, type) {
     const value = input.value.toLowerCase();
@@ -28,9 +38,15 @@ document.addEventListener('DOMContentLoaded', () => {
         li.addEventListener('click', () => {
           input.value = suggestion.phone;
           if (type === 'customers') {
-            document.getElementById('customer-name').value = suggestion.name;
+            const customerNameInput = document.getElementById('customer-name');
+            if (customerNameInput) {
+              customerNameInput.value = suggestion.name;
+            }
           } else {
-            document.getElementById('referer-name').value = suggestion.name;
+            const refererNameInput = document.getElementById('referer-name');
+            if (refererNameInput) {
+              refererNameInput.value = suggestion.name;
+            }
           }
           suggestionsDropdown.remove();
         });
@@ -39,7 +55,10 @@ document.addEventListener('DOMContentLoaded', () => {
         li.addEventListener('click', () => {
           input.value = suggestion.name;
           const row = input.closest('tr');
-          row.querySelector('.item-price').value = suggestion.price;
+          const itemPriceInput = row.querySelector('.item-price');
+          if (itemPriceInput) {
+            itemPriceInput.value = suggestion.price;
+          }
           suggestionsDropdown.remove();
         });
       }
