@@ -1,24 +1,19 @@
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', function () {
   const tabButtons = document.querySelectorAll('.tab-button');
   const tabContents = document.querySelectorAll('.tab-content');
 
   tabButtons.forEach(button => {
     button.addEventListener('click', () => {
-      const targetTab = button.dataset.tab;
-      
       tabButtons.forEach(btn => btn.classList.remove('active-tab'));
       button.classList.add('active-tab');
-      
+
+      const tab = button.getAttribute('data-tab');
       tabContents.forEach(content => {
-        content.id === `${targetTab}-tab` ? content.classList.remove('hidden') : content.classList.add('hidden');
+        content.classList.add('hidden');
+        if (content.id === `${tab}-tab`) {
+          content.classList.remove('hidden');
+        }
       });
     });
-  });
-
-  document.getElementById('pos-form').addEventListener('keydown', (event) => {
-    if (event.key === 'Enter') {
-      event.preventDefault();
-      document.getElementById('add-item').click();
-    }
   });
 });

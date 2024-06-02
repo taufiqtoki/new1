@@ -10,32 +10,37 @@ const dataFilePath = path.join(__dirname, 'data.json');
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+const readData = () => {
+  if (!fs.existsSync(dataFilePath)) {
+    return { customers: [], referers: [], orders: [], items: [] };
+  }
+  const data = fs.readFileSync(dataFilePath, 'utf8');
+  return data ? JSON.parse(data) : { customers: [], referers: [], orders: [], items: [] };
+};
+
+const writeData = (data) => {
+  fs.writeFileSync(dataFilePath, JSON.stringify(data, null, 2), 'utf8');
+};
+
 app.post('/api/save', (req, res) => {
-    const { section, data } = req.body;
+  const { section, data } = req.body;
+  const jsonData = readData();
 
-    fs.readFile(dataFilePath, 'utf8', (err, fileData) => {
-        if (err) {
-            return res.status(500).json({ error: 'Failed to read data' });
-        }
+  if (!jsonData[section]) {
+    return res.status(400).json({ error: 'Invalid section' });
+  }
 
-        let jsonData = fileData ? JSON.parse(fileData) : { customers: [], referers: [], orders: [], items: [] };
-        
-        if (!jsonData[section]) {
-            return res.status(400).json({ error: 'Invalid section' });
-        }
+  jsonData[section].push(data);
+  writeData(jsonData);
 
-        jsonData[section].push(data);
+  res.status(200).json({ message: 'Data saved successfully' });
+});
 
-        fs.writeFile(dataFilePath, JSON.stringify(jsonData, null, 2), 'utf8', (err) => {
-            if (err) {
-                return res.status(500).json({ error: 'Failed to save data' });
-            }
-
-            res.status(200).json({ message: 'Data saved successfully' });
-        });
-    });
+app.get('/api/data', (req, res) => {
+  const jsonData = readData();
+  res.status(200).json(jsonData);
 });
 
 app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}`);
 });

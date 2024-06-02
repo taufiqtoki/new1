@@ -3,48 +3,20 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>POS System</title>
+  <title>Friendship Communication</title>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
   <style>
-    .active-tab {
-      background-color: #4caf50;
-      color: white;
-    }
-    .toast {
-      position: fixed;
-      top: 1rem;
-      right: 1rem;
-      background-color: green;
-      color: white;
-      padding: 1rem;
-      border-radius: 0.5rem;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
-    .suggestions-dropdown {
-      position: absolute;
-      background-color: white;
-      border: 1px solid #ccc;
-      border-radius: 0.5rem;
-      z-index: 1000;
-      width: calc(100% - 2rem);
-      margin-top: 0.5rem;
-    }
-    .suggestions-dropdown li {
-      padding: 0.5rem;
-      cursor: pointer;
-    }
-    .suggestions-dropdown li:hover {
-      background-color: #f0f0f0;
-    }
-    button:active {
-      box-shadow: 0 5px #666;
-      transform: translateY(4px);
-    }
+    .active-tab { background-color: #4caf50; color: white; }
+    .toast { position: fixed; top: 1rem; left: 50%; transform: translateX(-50%); background-color: green; color: white; padding: 1rem; border-radius: 0.5rem; box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); }
+    .suggestions-dropdown { position: absolute; background-color: white; border: 1px solid #ccc; border-radius: 0.5rem; z-index: 1000; width: calc(100% - 2rem); margin-top: 0.5rem; }
+    .suggestions-dropdown li { padding: 0.5rem; cursor: pointer; }
+    .suggestions-dropdown li:hover { background-color: #f0f0f0; }
+    button:active { box-shadow: 0 5px #666; transform: translateY(4px); }
   </style>
 </head>
 <body class="bg-gray-100">
   <nav class="p-4 bg-gray-800 text-white flex justify-between">
-    <h1 class="text-xl font-bold">POS System</h1>
+    <h1 class="text-xl font-bold">Profit Sharing Project by Friendship Communication System</h1>
     <div>
       <button data-tab="pos" class="tab-button active-tab px-4 py-2 rounded">POS</button>
       <button data-tab="customers" class="tab-button px-4 py-2 rounded">Customers</button>
@@ -58,79 +30,82 @@
       <form id="pos-form">
         <div class="grid grid-cols-2 gap-4 mb-4">
           <div>
-            <label for="customer-name" class="block">Customer Name</label>
-            <input id="customer-name" type="text" class="w-full p-2 border rounded">
-          </div>
-          <div>
             <label for="customer-phone" class="block">Customer Phone</label>
             <input id="customer-phone" type="text" class="w-full p-2 border rounded">
           </div>
           <div>
-            <label for="referer-name" class="block">Referer Name (Optional)</label>
-            <input id="referer-name" type="text" class="w-full p-2 border rounded">
+            <label for="customer-name" class="block">Customer Name</label>
+            <input id="customer-name" type="text" class="w-full p-2 border rounded">
           </div>
           <div>
             <label for="referer-phone" class="block">Referer Phone (Optional)</label>
             <input id="referer-phone" type="text" class="w-full p-2 border rounded">
           </div>
+          <div>
+            <label for="referer-name" class="block">Referer Name (Optional)</label>
+            <input id="referer-name" type="text" class="w-full p-2 border rounded">
+          </div>
         </div>
         <table class="w-full bg-white rounded shadow-lg">
           <thead>
-            <tr class="bg-gray-200">
-              <th class="w-10 border px-4 py-2">#</th>
-              <th class="w-2/10 border px-4 py-2">Item Name</th>
-              <th class="w-2/10 border px-4 py-2">Item Price</th>
-              <th class="w-2/10 border px-4 py-2">Qty</th>
-              <th class="w-2/10 border px-4 py-2">CPP</th>
-              <th class="w-2/10 border px-4 py-2">Total</th>
-              <th class="border px-4 py-2">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="pos-items">
-          </tbody>
-        </table>
-        <div class="flex justify-between items-center mt-4">
-          <button type="button" id="add-item" class="px-4 py-2 bg-blue-500 text-white rounded">Add Item</button>
-          <button type="button" id="remove-item" class="px-4 py-2 bg-red-500 text-white rounded">Remove Item</button>
-          <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded">Submit Sale</button>
-        </div>
-        <div class="mt-4">
-          <p>Total Products: <span id="products-total">0</span></p>
-          <p>Total Price: $<span id="total-price">0.00</span></p>
-        </div>
+<tr class="bg-gray-200">
+  <th class="w-10 border px-4 py-2">#</th>
+  <th class="w-2/10 border px-4 py-2">Item Name</th>
+  <th class="w-2/10 border px-4 py-2">Item Price</th>
+  <th class="w-2/10 border px-4 py-2">Qty</th>
+  <th class="w-2/10 border px-4 py-2">CPP</th> <th class="w-2/10 border px-4 py-2">Total</th>
+  <th class="border px-4 py-2">Actions</th>
+</tr>
+</thead>
+<tbody id="pos-items">
+</tbody>
+</table>
+<div class="flex justify-between items-center mt-4">
+  <p>Total Products: <span id="products-total">0</span></p>
+  <p>Grand Total: <span id="total-price">0.00</span></p>
+  <button type="submit" class="px-4 py-2 bg-green-500 text-white rounded">Submit Sale</button>
+</div>
       </form>
     </section>
+
     <section id="customers-tab" class="tab-content hidden">
       <h2 class="text-2xl mb-4">Customers</h2>
       <table class="w-full bg-white rounded shadow-lg">
         <thead>
           <tr class="bg-gray-200">
+            <th class="border px-4 py-2">#</th>
             <th class="border px-4 py-2">Name</th>
             <th class="border px-4 py-2">Phone</th>
             <th class="border px-4 py-2">Total Purchased</th>
-            <th class="border px-4 py-2">Total Profit</th>
+            <th class="border px-4 py-2">Total Profit Given</th>
           </tr>
         </thead>
         <tbody id="customer-list">
         </tbody>
       </table>
       <input id="customer-search" type="text" class="mt-4 w-full p-2 border rounded" placeholder="Search Customers...">
+      <ul id="customer-suggestions" class="suggestions-dropdown hidden"></ul>
     </section>
+
     <section id="referers-tab" class="tab-content hidden">
       <h2 class="text-2xl mb-4">Referers</h2>
       <table class="w-full bg-white rounded shadow-lg">
         <thead>
           <tr class="bg-gray-200">
+            <th class="border px-4 py-2">#</th>
             <th class="border px-4 py-2">Name</th>
             <th class="border px-4 py-2">Phone</th>
             <th class="border px-4 py-2">Commission</th>
+            <th class="border px-4 py-2">Action</th>
           </tr>
         </thead>
         <tbody id="referer-list">
         </tbody>
       </table>
       <input id="referer-search" type="text" class="mt-4 w-full p-2 border rounded" placeholder="Search Referers...">
+      <ul id="referer-suggestions" class="suggestions-dropdown hidden"></ul>
     </section>
+
     <section id="sales-history-tab" class="tab-content hidden">
       <h2 class="text-2xl mb-4">Sales History</h2>
       <table class="w-full bg-white rounded shadow-lg">
@@ -139,7 +114,7 @@
             <th class="border px-4 py-2">Date</th>
             <th class="border px-4 py-2">Order #</th>
             <th class="border px-4 py-2">Customer</th>
-            <th class="border px-4 py-2">Total Sales</th>
+            <th class="border px-4 py-2">Total Price</th>
             <th class="border px-4 py-2">Total Profit</th>
             <th class="border px-4 py-2">Actions</th>
           </tr>
@@ -147,14 +122,16 @@
         <tbody id="sales-history-list">
         </tbody>
       </table>
-      <input id="sales-history-search" type="text" class="mt-4 w-full p-2 border rounded" placeholder="Search Sales History...">
+      <div id="sales-summary" class="mt-4">
+        <!-- Summary data will be inserted here -->
+      </div>
     </section>
   </main>
+  <div id="toast" class="hidden"></div>
   <script src="axios.min.js"></script>
-  
-  <script src="localstorage.js"></script>
   <script src="pos.js"></script>
-  <script src="suggestions.js"></script>
   <script src="tabs.js"></script>
+  <script src="localstorage.js"></script>
+  <script src="suggestions.js"></script>
 </body>
 </html>
