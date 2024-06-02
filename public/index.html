@@ -94,7 +94,7 @@
       <input id="customer-search" type="text" class="mt-4 w-full p-2 border rounded text-sm md:text-base lg:text-lg" placeholder="Search Customers...">
       <ul id="customer-suggestions" class="suggestions-dropdown hidden"></ul>
     </section>
-	
+  
     <section id="referers-tab" class="tab-content hidden">
       <h2 class="text-2xl mb-4">Referers</h2>
       <div class="overflow-x-auto">
@@ -104,8 +104,8 @@
               <th class="border px-4 py-2">#</th>
               <th class="border px-4 py-2">Name</th>
               <th class="border px-4 py-2">Phone</th>
-              <th class="border px-4 py-2">Commission</th>
-              <th class="border px-4 py-2">Action</th>
+              <th class="border px-4 py-2">Total Referrals</th>
+              <th class="border px-4 py-2">Total Profit Earned</th>
             </tr>
           </thead>
           <tbody id="referer-list"></tbody>
@@ -114,35 +114,28 @@
       <input id="referer-search" type="text" class="mt-4 w-full p-2 border rounded" placeholder="Search Referers...">
       <ul id="referer-suggestions" class="suggestions-dropdown hidden"></ul>
     </section>
-
+  
     <section id="sales-history-tab" class="tab-content hidden">
       <h2 class="text-2xl mb-4">Sales History</h2>
       <div class="overflow-x-auto">
         <table class="w-full bg-white rounded shadow-lg">
           <thead>
             <tr class="bg-gray-200">
-              <th class="border px-4 py-2">Date</th>
-              <th class="border px-4 py-2">Order #</th>
-              <th class="border px-4 py-2">Customer</th>
+              <th class="border px-4 py-2">#</th>
+              <th class="border px-4 py-2">Customer Name</th>
+              <th class="border px-4 py-2">Referer Name</th>
               <th class="border px-4 py-2">Total Price</th>
-              <th class="border px-4 py-2">Total Profit</th>
-              <th class="border px-4 py-2">Actions</th>
+              <th class="border px-4 py-2">Date</th>
             </tr>
           </thead>
           <tbody id="sales-history-list"></tbody>
         </table>
       </div>
-      <div id="sales-summary" class="mt-4">
-        <!-- Summary data will be inserted here -->
-      </div>
+      <input id="sales-history-search" type="text" class="mt-4 w-full p-2 border rounded" placeholder="Search Sales History...">
     </section>
   </main>
-  <div id="toast" class="hidden"></div>
-  <script src="axios.min.js"></script>
+
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="pos.js"></script>
-  <script src="non-pos.js"></script>
-  <script src="tabs.js"></script>
-  <script src="localstorage.js"></script>
-  <script src="suggestions.js"></script>
 </body>
 </html>
