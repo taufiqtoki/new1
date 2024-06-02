@@ -1,75 +1,39 @@
 const express = require('express');
-const fs = require('fs');
 const app = express();
-const port = 3000;
-
-let data = {
-  customers: [],
-  referers: [],
-  orders: [],
-  items: []
-};
-
-const loadData = () => {
-  fs.readFile('data.json', (err, jsonData) => {
-    if (err) {
-      console.error('Error reading data:', err);
-      return;
-    }
-    data = JSON.parse(jsonData);
-  });
-};
-
-const saveData = () => {
-  fs.writeFile('data.json', JSON.stringify(data, null, 2), (err) => {
-    if (err) {
-      console.error('Error saving data:', err);
-    }
-  });
-};
-
-loadData();
+const fs = require('fs');
+const path = require('path');
 
 app.use(express.json());
 app.use(express.static('public'));
 
 app.get('/api/data', (req, res) => {
-  res.json(data);
+  fs.readFile('data.json', (err, data) => {
+    if (err) {
+      res.status(500).send('Error reading data file');
+    } else {
+      res.json(JSON.parse(data));
+    }
+  });
 });
 
 app.post('/api/order', (req, res) => {
-  const order = req.body;
-  data.orders.push(order);
-
-  let customer = data.customers.find(c => c.customerPhone === order.customerPhone);
-  if (!customer) {
-    customer = { customerName: order.customerName, customerPhone: order.customerPhone, totalSpent: 0, totalProfitGiven: 0 };
-    data.customers.push(customer);
-  }
-  customer.totalSpent += order.totalPrice;
-  customer.totalProfitGiven += order.totalProfit;
-
-  let referer = data.referers.find(r => r.refererPhone === order.refererPhone);
-  if (!referer && order.refererPhone) {
-    referer = { refererName: order.refererName, refererPhone: order.refererPhone, totalCommission: 0 };
-    data.referers.push(referer);
-  }
-  if (referer) {
-    referer.totalCommission += order.totalProfit * 0.1; // Assuming 10% commission
-  }
-
-  order.items.forEach(item => {
-    let existingItem = data.items.find(i => i.name === item.name);
-    if (!existingItem) {
-      existingItem = { name: item.name, price: item.price, cpp: item.cpp };
-      data.items.push(existingItem);
+  fs.readFile('data.json', (err, data) => {
+    if (err) {
+      res.status(500).send('Error reading data file');
+    } else {
+      const jsonData = JSON.parse(data);
+      jsonData.orders.push(req.body);
+      fs.writeFile('data.json', JSON.stringify(jsonData, null, 2), (err) => {
+        if (err) {
+          res.status(500).send('Error writing data file');
+        } else {
+          res.status(200).send('Order saved successfully');
+        }
+      });
     }
   });
-
-  saveData();
-  res.status(201).send(order);
 });
 
-app.listen(port, () => {
-  console.log(`Server is running at http://localhost:${port}`);
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
 });

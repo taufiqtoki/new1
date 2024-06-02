@@ -9,15 +9,15 @@
     {
       "customerName": "Aqsa",
       "customerPhone": "01758678701",
-      "totalSpent": 500,
-      "totalProfitGiven": 60
+      "totalSpent": 30865,
+      "totalProfitGiven": null
     }
   ],
   "referers": [
     {
       "refererName": "taufiq",
       "refererPhone": "01822272133",
-      "totalCommission": 6
+      "totalCommission": null
     }
   ],
   "orders": [
@@ -200,6 +200,98 @@
       "totalPrice": 100,
       "totalProfit": 60,
       "orderId": 9
+    },
+    {
+      "customerName": "Aqsa",
+      "customerPhone": "01758678701",
+      "refererName": "taufiq",
+      "refererPhone": "01822272133",
+      "items": [
+        {
+          "name": "ff",
+          "price": 6000,
+          "qty": 5,
+          "cpp": 5555,
+          "total": 30000
+        },
+        {
+          "name": "ggg",
+          "price": 7,
+          "qty": 17,
+          "cpp": 7,
+          "total": 119
+        },
+        {
+          "name": "uu",
+          "price": 77,
+          "qty": 1,
+          "cpp": 8,
+          "total": 77
+        }
+      ],
+      "date": "2024-06-02T03:44:38.722Z",
+      "totalProducts": 23,
+      "totalPrice": 30196
+    },
+    {
+      "customerName": "Aqsa",
+      "customerPhone": "01758678701",
+      "refererName": "taufiq",
+      "refererPhone": "01822272133",
+      "items": [
+        {
+          "name": "e",
+          "price": 4,
+          "qty": 1,
+          "cpp": 2,
+          "total": 4,
+          "ppp": 2
+        }
+      ],
+      "date": "2024-06-02T04:15:37.056Z",
+      "totalProducts": 1,
+      "totalPrice": 4,
+      "totalProfit": 2
+    },
+    {
+      "customerName": "Aqsa",
+      "customerPhone": "01758678701",
+      "refererName": "taufiq",
+      "refererPhone": "01822272133",
+      "items": [
+        {
+          "name": "f",
+          "price": 55,
+          "qty": 3,
+          "cpp": 44,
+          "total": 165,
+          "ppp": 11
+        }
+      ],
+      "date": "2024-06-02T04:20:45.346Z",
+      "totalProducts": 3,
+      "totalPrice": 165,
+      "totalProfit": 33
+    },
+    {
+      "customerName": "Aqsa",
+      "customerPhone": "01758678701",
+      "refererName": "taufiq",
+      "refererPhone": "01822272133",
+      "items": [
+        {
+          "name": "tt",
+          "price": 44444,
+          "qty": 4444444444444444,
+          "cpp": 99990,
+          "total": 197528888888888900000,
+          "ppp": -55546
+        }
+      ],
+      "date": "2024-06-02T05:24:09.553Z",
+      "totalProducts": 4444444444444444,
+      "totalPrice": 197528888888888900000,
+      "totalProfit": -246871111111111080000
     }
   ],
   "items": [
